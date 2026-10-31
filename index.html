@@ -5,173 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0E0F11">
-  <meta name="description" content="Démo publique des maquettes Money Tracker. Données fictives. L’application réelle est privée.">
+  <meta name="description" content="Démo publique Money Tracker. Données fictives.">
   <title>Money Tracker — démo</title>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
-  <link rel="icon" href="favicon.ico" sizes="48x48">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon-180.png">
-  <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="site.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'none'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#contenu"><span class="fr">Aller au contenu</span><span class="en">Skip to content</span></a>
-  <div class="shell">
-    <header>
-      <a class="brand" href="https://dynamogic.com/">
-        <img class="lockup" src="brand/lockup-horizontal-dark.svg" alt="Dynamogic" height="26">
-      </a>
-      <div class="lang" role="radiogroup" aria-label="Langue / Language">
-        <label>
-          <input type="radio" name="lang" value="fr" checked>
-          <span>FR</span>
-        </label>
-        <label>
-          <input type="radio" name="lang" value="en">
-          <span>EN</span>
-        </label>
+  <a class="skip" href="#main">Contenu</a>
+  <div class="app">
+    <p class="banner" role="note">Démo — données fictives</p>
+    <header class="top">
+      <svg class="mark" viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
+        <path class="owl" fill-rule="evenodd" d="M24 14.6L45 2.476L41 9.404L41 28L24 45L7 28L7 9.404L3 2.476Z M26.151 21.758A6 6 0 1 0 36.082 16.024Z M21.849 21.758A6 6 0 1 1 11.918 16.024Z M29.1 22.321A2.6 2.6 0 1 0 34.3 22.321A2.6 2.6 0 1 0 29.1 22.321Z M13.7 22.321A2.6 2.6 0 1 0 18.9 22.321A2.6 2.6 0 1 0 13.7 22.321Z M24 24.299L27.985 26.599L24 37.913L20.015 26.599Z"/>
+        <path class="beak" d="M24 25.8L26.4 27.186L24 34L21.6 27.186Z"/>
+      </svg>
+      <span class="pill" id="month-pill">Novembre</span>
+      <div class="spacer"></div>
+      <div class="seg" id="lang" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" id="lang-fr">FR</button>
+        <button type="button" data-lang="en" id="lang-en">EN</button>
       </div>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false">Clair</button>
     </header>
-
-    <main id="contenu">
-      <p class="kicker"><span class="fr">Démo publique</span><span class="en">Public demo</span></p>
-      <h1>Money Tracker <span class="mark">— démo</span></h1>
-      <p class="lede">
-        <span class="fr">Ces planches sont les maquettes de l’interface. Les montants sont inventés. L’application réelle reste privée : elle n’est pas dans ce dépôt.</span>
-        <span class="en">These boards are interface mockups. The amounts are made up. The real application stays private: it is not in this repository.</span>
-      </p>
-      <div class="note" role="note">
-        <p>Maquettes — données fictives</p>
-        <p class="en">Mockups — fictional data.</p>
-      </div>
-
-      <nav class="boards" aria-label="Planches">
-        <a href="design/screens-v2.html">
-          <span class="num">01</span>
-          <strong><span class="fr">Écrans</span><span class="en">Screens</span></strong>
-          <span class="desc fr">Accueil, échéances, analyse, Telegram et thème clair.</span>
-          <span class="desc en">Home, due dates, analysis, Telegram and the light theme.</span>
-          <span class="path">design/screens-v2.html</span>
-        </a>
-        <a href="design/screens-v2-extra.html">
-          <span class="num">02</span>
-          <strong><span class="fr">Compléments</span><span class="en">More screens</span></strong>
-          <span class="desc fr">Bienvenue et réglages.</span>
-          <span class="desc en">Welcome and settings.</span>
-          <span class="path">design/screens-v2-extra.html</span>
-        </a>
-        <a href="design/screen-tiers.html">
-          <span class="num">03</span>
-          <strong><span class="fr">Méthode des tiers</span><span class="en">Thirds method</span></strong>
-          <span class="desc fr">Accueil selon la répartition du salaire.</span>
-          <span class="desc en">Home, split from the salary.</span>
-          <span class="path">design/screen-tiers.html</span>
-        </a>
-      </nav>
-
-      <section>
-        <div class="section-head">
-          <h2><span class="fr">Cinq écrans</span><span class="en">Five screens</span></h2>
-          <a class="open" href="design/screens-v2.html"><span class="fr">Ouvrir la planche</span><span class="en">Open the board</span></a>
-        </div>
-        <ul class="shots">
-          <li>
-            <a href="design/screens-v2.html">
-              <figure>
-                <img src="design/v2-01.png" width="780" height="1748" alt="Maquette Accueil, données fictives">
-                <figcaption><span class="fr">01 · Accueil</span><span class="en">01 · Home</span></figcaption>
-              </figure>
-            </a>
-          </li>
-          <li>
-            <a href="design/screens-v2.html">
-              <figure>
-                <img src="design/v2-02.png" width="780" height="1748" alt="Maquette Échéances, données fictives">
-                <figcaption><span class="fr">02 · Échéances</span><span class="en">02 · Due dates</span></figcaption>
-              </figure>
-            </a>
-          </li>
-          <li>
-            <a href="design/screens-v2.html">
-              <figure>
-                <img src="design/v2-03.png" width="780" height="1748" alt="Maquette Analyse, données fictives">
-                <figcaption><span class="fr">03 · Analyse</span><span class="en">03 · Analysis</span></figcaption>
-              </figure>
-            </a>
-          </li>
-          <li>
-            <a href="design/screens-v2.html">
-              <figure>
-                <img src="design/v2-04.png" width="780" height="1748" alt="Maquette Telegram, données fictives">
-                <figcaption>04 · Telegram</figcaption>
-              </figure>
-            </a>
-          </li>
-          <li>
-            <a href="design/screens-v2.html">
-              <figure>
-                <img src="design/v2-05.png" width="780" height="1748" alt="Maquette Accueil en thème clair, données fictives">
-                <figcaption><span class="fr">05 · Accueil, clair</span><span class="en">05 · Home, light</span></figcaption>
-              </figure>
-            </a>
-          </li>
-        </ul>
-        <a class="overview" href="design/v2-all.png">
-          <img src="design/v2-all.png" width="4600" height="1960" alt="Planche des écrans 01 à 05, données fictives">
-        </a>
-      </section>
-
-      <section>
-        <div class="section-head">
-          <h2><span class="fr">Bienvenue et réglages</span><span class="en">Welcome and settings</span></h2>
-          <a class="open" href="design/screens-v2-extra.html"><span class="fr">Ouvrir la planche</span><span class="en">Open the board</span></a>
-        </div>
-        <ul class="shots">
-          <li>
-            <a href="design/screens-v2-extra.html">
-              <figure>
-                <img src="design/v2-06.png" width="780" height="1748" alt="Maquette Bienvenue, données fictives">
-                <figcaption><span class="fr">06 · Bienvenue</span><span class="en">06 · Welcome</span></figcaption>
-              </figure>
-            </a>
-          </li>
-          <li>
-            <a href="design/screens-v2-extra.html">
-              <figure>
-                <img src="design/v2-07.png" width="780" height="1748" alt="Maquette Réglages, données fictives">
-                <figcaption><span class="fr">07 · Réglages</span><span class="en">07 · Settings</span></figcaption>
-              </figure>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <div class="section-head">
-          <h2><span class="fr">Méthode des tiers</span><span class="en">Thirds method</span></h2>
-          <a class="open" href="design/screen-tiers.html"><span class="fr">Ouvrir la planche</span><span class="en">Open the board</span></a>
-        </div>
-        <ul class="shots">
-          <li>
-            <a href="design/screen-tiers.html">
-              <figure>
-                <img src="design/screen-tiers.png" width="780" height="1688" alt="Maquette méthode des tiers, données fictives">
-                <figcaption><span class="fr">Tiers</span><span class="en">Thirds</span></figcaption>
-              </figure>
-            </a>
-          </li>
-        </ul>
-      </section>
-    </main>
-
+    <main id="main" tabindex="-1"></main>
     <footer>
-      <a href="https://dynamogic.com/">
-        <img class="lockup" src="brand/lockup-horizontal-dark.svg" alt="Dynamogic" height="22">
-      </a>
-      <a class="mail" href="mailto:contact@dynamogic.com">contact@dynamogic.com</a>
-      <p class="fr">Démo publique. Données fictives. L’application réelle est privée.</p>
-      <p class="en">Public demo. Fictional data. The real application is private.</p>
+      <a href="https://dynamogic.com/">Dynamogic</a>
+      <a href="mailto:contact@dynamogic.com">contact@dynamogic.com</a>
     </footer>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Sections" hidden>
+      <button type="button" role="tab" data-tab="home" id="tab-home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>
+        <span>Accueil</span>
+      </button>
+      <button type="button" role="tab" data-tab="bills" id="tab-bills">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+        <span>Échéances</span>
+      </button>
+      <button type="button" role="tab" data-tab="analysis" id="tab-analysis">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
+        <span>Analyse</span>
+      </button>
+      <button type="button" role="tab" data-tab="settings" id="tab-settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+        <span>Réglages</span>
+      </button>
+    </nav>
+    <button type="button" class="fab" id="fab" aria-label="Ajouter une dépense" hidden>+</button>
+    <dialog id="add-dialog" aria-labelledby="add-title">
+      <form id="add-form">
+        <h2 id="add-title">Ajouter une dépense</h2>
+        <label for="add-input" id="add-label">Montant puis un mot</label>
+        <input id="add-input" name="expense" autocomplete="off" enterkeyhint="done" placeholder="45 café">
+        <p id="add-error" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button type="button" id="add-cancel">Annuler</button>
+          <button type="submit" id="add-save">Ajouter</button>
+        </div>
+      </form>
+    </dialog>
+    <p id="status" class="sr" role="status"></p>
   </div>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,554 @@
+{
+  "asOf": "2026-11-12",
+  "currency": "MAD",
+  "income": {
+    "amount": 6000,
+    "day": 1,
+    "name": {
+      "fr": "Salaire",
+      "en": "Salary"
+    }
+  },
+  "bills": [
+    {
+      "id": "rent",
+      "amount": 2000,
+      "day": 1,
+      "category": "logement",
+      "name": {
+        "fr": "Loyer",
+        "en": "Rent"
+      }
+    },
+    {
+      "id": "internet",
+      "amount": 300,
+      "day": 8,
+      "category": "abonnements",
+      "name": {
+        "fr": "Internet",
+        "en": "Internet"
+      }
+    },
+    {
+      "id": "phone",
+      "amount": 150,
+      "day": 15,
+      "category": "abonnements",
+      "name": {
+        "fr": "Téléphone",
+        "en": "Phone"
+      }
+    },
+    {
+      "id": "gym",
+      "amount": 250,
+      "day": 20,
+      "category": "sport",
+      "name": {
+        "fr": "Salle de sport",
+        "en": "Gym"
+      }
+    },
+    {
+      "id": "streaming",
+      "amount": 100,
+      "day": 31,
+      "category": "abonnements",
+      "name": {
+        "fr": "Streaming",
+        "en": "Streaming"
+      }
+    }
+  ],
+  "emergency": {
+    "saved": 1200,
+    "goal": 3000
+  },
+  "categories": {
+    "cafes": {
+      "fr": "Cafés",
+      "en": "Cafés"
+    },
+    "courses": {
+      "fr": "Courses",
+      "en": "Groceries"
+    },
+    "transport": {
+      "fr": "Transport",
+      "en": "Transport"
+    },
+    "loisirs": {
+      "fr": "Loisirs",
+      "en": "Leisure"
+    },
+    "sante": {
+      "fr": "Santé",
+      "en": "Health"
+    },
+    "logement": {
+      "fr": "Logement",
+      "en": "Housing"
+    },
+    "abonnements": {
+      "fr": "Abonnements",
+      "en": "Subscriptions"
+    },
+    "sport": {
+      "fr": "Sport",
+      "en": "Sport"
+    },
+    "autre": {
+      "fr": "Autre",
+      "en": "Other"
+    }
+  },
+  "transactions": [
+    {
+      "id": "t1",
+      "date": "2026-11-01",
+      "note": "Café",
+      "amount": 12,
+      "category": "cafes"
+    },
+    {
+      "id": "t2",
+      "date": "2026-11-01",
+      "note": "Pain",
+      "amount": 6,
+      "category": "courses"
+    },
+    {
+      "id": "t3",
+      "date": "2026-11-01",
+      "note": "Tram",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t4",
+      "date": "2026-11-02",
+      "note": "Café",
+      "amount": 10,
+      "category": "cafes"
+    },
+    {
+      "id": "t5",
+      "date": "2026-11-02",
+      "note": "Marché",
+      "amount": 23,
+      "category": "courses"
+    },
+    {
+      "id": "t6",
+      "date": "2026-11-02",
+      "note": "Bus",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t7",
+      "date": "2026-11-03",
+      "note": "Thé",
+      "amount": 7,
+      "category": "cafes"
+    },
+    {
+      "id": "t8",
+      "date": "2026-11-03",
+      "note": "Lait",
+      "amount": 6,
+      "category": "courses"
+    },
+    {
+      "id": "t9",
+      "date": "2026-11-03",
+      "note": "Café",
+      "amount": 9,
+      "category": "cafes"
+    },
+    {
+      "id": "t10",
+      "date": "2026-11-04",
+      "note": "Courses",
+      "amount": 7,
+      "category": "courses"
+    },
+    {
+      "id": "t11",
+      "date": "2026-11-04",
+      "note": "Tram",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t12",
+      "date": "2026-11-04",
+      "note": "Café",
+      "amount": 8,
+      "category": "cafes"
+    },
+    {
+      "id": "t13",
+      "date": "2026-11-05",
+      "note": "Pharmacie",
+      "amount": 16,
+      "category": "sante"
+    },
+    {
+      "id": "t14",
+      "date": "2026-11-05",
+      "note": "Café",
+      "amount": 8,
+      "category": "cafes"
+    },
+    {
+      "id": "t15",
+      "date": "2026-11-05",
+      "note": "Pain",
+      "amount": 6,
+      "category": "courses"
+    },
+    {
+      "id": "t16",
+      "date": "2026-11-06",
+      "note": "Taxi",
+      "amount": 19,
+      "category": "transport"
+    },
+    {
+      "id": "t17",
+      "date": "2026-11-06",
+      "note": "Café",
+      "amount": 11,
+      "category": "cafes"
+    },
+    {
+      "id": "t18",
+      "date": "2026-11-06",
+      "note": "Marché",
+      "amount": 21,
+      "category": "courses"
+    },
+    {
+      "id": "t19",
+      "date": "2026-11-07",
+      "note": "Cinéma",
+      "amount": 25,
+      "category": "loisirs"
+    },
+    {
+      "id": "t20",
+      "date": "2026-11-07",
+      "note": "Café",
+      "amount": 7,
+      "category": "cafes"
+    },
+    {
+      "id": "t21",
+      "date": "2026-11-07",
+      "note": "Bus",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t22",
+      "date": "2026-11-08",
+      "note": "Courses",
+      "amount": 27,
+      "category": "courses"
+    },
+    {
+      "id": "t23",
+      "date": "2026-11-08",
+      "note": "Thé",
+      "amount": 6,
+      "category": "cafes"
+    },
+    {
+      "id": "t24",
+      "date": "2026-11-08",
+      "note": "Tram",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t25",
+      "date": "2026-11-09",
+      "note": "Café",
+      "amount": 9,
+      "category": "cafes"
+    },
+    {
+      "id": "t26",
+      "date": "2026-11-09",
+      "note": "Pain",
+      "amount": 6,
+      "category": "courses"
+    },
+    {
+      "id": "t27",
+      "date": "2026-11-09",
+      "note": "Livre",
+      "amount": 17,
+      "category": "loisirs"
+    },
+    {
+      "id": "t28",
+      "date": "2026-11-10",
+      "note": "Marché",
+      "amount": 20,
+      "category": "courses"
+    },
+    {
+      "id": "t29",
+      "date": "2026-11-10",
+      "note": "Café",
+      "amount": 8,
+      "category": "cafes"
+    },
+    {
+      "id": "t30",
+      "date": "2026-11-10",
+      "note": "Bus",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t31",
+      "date": "2026-11-11",
+      "note": "Café",
+      "amount": 11,
+      "category": "cafes"
+    },
+    {
+      "id": "t32",
+      "date": "2026-11-11",
+      "note": "Pharmacie",
+      "amount": 12,
+      "category": "sante"
+    },
+    {
+      "id": "t33",
+      "date": "2026-11-11",
+      "note": "Tram",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t34",
+      "date": "2026-11-12",
+      "note": "Café",
+      "amount": 8,
+      "category": "cafes"
+    },
+    {
+      "id": "t35",
+      "date": "2026-11-12",
+      "note": "Courses",
+      "amount": 22,
+      "category": "courses"
+    },
+    {
+      "id": "t36",
+      "date": "2026-11-12",
+      "note": "Pain",
+      "amount": 6,
+      "category": "courses"
+    },
+    {
+      "id": "t37",
+      "date": "2026-11-12",
+      "note": "Thé",
+      "amount": 6,
+      "category": "cafes"
+    },
+    {
+      "id": "t38",
+      "date": "2026-11-12",
+      "note": "Bus",
+      "amount": 6,
+      "category": "transport"
+    },
+    {
+      "id": "t39",
+      "date": "2026-11-04",
+      "note": "Café crème",
+      "amount": 7,
+      "category": "cafes"
+    },
+    {
+      "id": "t40",
+      "date": "2026-11-09",
+      "note": "Jus",
+      "amount": 6,
+      "category": "courses"
+    }
+  ],
+  "i18n": {
+    "fr": {
+      "welcomeKicker": "Bienvenue",
+      "welcomeTitle": "Ton argent, *avant* qu'il parte.",
+      "welcomeBody": "Le salaire et les sorties fixes sont déjà là, en données fictives. Chaque écran se recalcule.",
+      "start": "Commencer",
+      "haveAccount": "Entrer dans la démo",
+      "month": "Novembre",
+      "themeToLight": "Thème clair",
+      "themeToDark": "Thème sombre",
+      "langLabel": "Langue",
+      "tabsLabel": "Sections",
+      "tabHome": "Accueil",
+      "tabBills": "Échéances",
+      "tabAnalysis": "Analyse",
+      "tabSettings": "Réglages",
+      "canSpend": "Tu peux dépenser aujourd'hui",
+      "perDay": "Par jour",
+      "free": "Libre",
+      "payday": "Paie",
+      "spent": "Dépensé",
+      "days": "{n} j",
+      "leftSpend": "Il reste {left} pour les envies · {days} jours avant la paie",
+      "obligations": "Obligations",
+      "wants": "Envies",
+      "invest": "Investir",
+      "setAside": "Mis de côté le 1er",
+      "billsOf": "{actual} / prévu {plan}",
+      "spentOf": "{spent} / {allow}",
+      "overflowSpend": "Les factures ({bills}) dépassent le prévu ({plan}) de {gap}. L'écart est pris sur les envies. Elles restent au-dessus de 1 000 MAD, donc l'investissement ne change pas.",
+      "overflowInvest": "Les factures dépassent le prévu et les envies passaient sous 1 000 MAD. L'investissement complète les envies, sans descendre sous 20 %.",
+      "overflowFloor": "Les factures sont trop lourdes pour garder 1 000 MAD d'envies. L'investissement reste au plancher de 20 % ({floor} MAD).",
+      "rollover": "Tu es {n} MAD sous le rythme d'hier. Ça augmente le montant d'aujourd'hui.",
+      "overspent": "Les envies du mois sont déjà utilisées. Le montant du jour est à 0.",
+      "forecast": "Projection jusqu'à la paie",
+      "upcoming": "Prochaines sorties",
+      "noneUpcoming": "Rien avant la paie.",
+      "reserved": "Déjà réservée",
+      "telegram": "Telegram",
+      "tgHello": "Bonjour",
+      "tgBody": "{daily} MAD pour aujourd'hui. Encore {days} jours avant la paie.",
+      "tgNext": "Prochaine sortie : {name}, {amount} MAD. Déjà réservée.",
+      "tgPrivate": "Aperçu du matin · jamais le solde complet",
+      "analysisKicker": "Analyse",
+      "analysisTitle": "Où est allé ton argent",
+      "spentMonth": "{n} MAD ce cycle",
+      "insightTop": "{name} est le plus gros poste : {amount} MAD.",
+      "insightPaceUnder": "Sous le rythme : {n} MAD de moins que prévu hier. Demain peut monter.",
+      "insightPaceOver": "Au-dessus du rythme de {n} MAD. Le jour d'après baisse.",
+      "emergency": "Objectif épargne",
+      "emergencyLine": "{saved} / {goal} MAD.",
+      "emergencySoon": "Le tiers investir de ce mois ({invest}) couvre le reste.",
+      "emergencyMonths": "Encore environ {n} mois au rythme investir actuel.",
+      "billsKicker": "Chaque mois",
+      "billsTitle": "Échéances",
+      "income": "Entrées",
+      "outgo": "Sorties",
+      "weekendMoved": "Week-end → jour ouvré",
+      "monthEnd": "Mois court, dernier jour",
+      "settingsKicker": "Ta méthode",
+      "settingsTitle": "Réglages",
+      "preset": "Répartition du salaire",
+      "presetThirds": "Tiers",
+      "preset503020": "50/30/20",
+      "presetCustom": "Libre",
+      "presetHintThirds": "33 % investir, 33 % obligations, 34 % envies. Le dernier point des 33/33/33 va aux envies pour faire 100.",
+      "presetHint503020": "20 % investir, 50 % obligations, 30 % envies.",
+      "presetHintCustom": "Trois parts. Le total doit faire 100.",
+      "sumBad": "Le total fait {n}, pas 100.",
+      "weekend": "Si l'échéance tombe un week-end",
+      "weekendBefore": "Jour ouvré avant",
+      "weekendAfter": "Jour ouvré après",
+      "weekendNone": "Garder le jour",
+      "reset": "Réinitialiser la démo",
+      "addTitle": "Ajouter une dépense",
+      "addLabel": "Montant puis un mot",
+      "addPlaceholder": "45 café",
+      "addSave": "Ajouter",
+      "addCancel": "Annuler",
+      "addError": "Écris un montant puis un mot, par exemple 45 café.",
+      "added": "{amount} MAD ajoutés dans {cat}.",
+      "fab": "Ajouter une dépense"
+    },
+    "en": {
+      "welcomeKicker": "Welcome",
+      "welcomeTitle": "Your money, *before* it leaves.",
+      "welcomeBody": "Salary and fixed bills are already here, as fictional data. Every screen recalculates.",
+      "start": "Start",
+      "haveAccount": "Enter the demo",
+      "month": "November",
+      "themeToLight": "Light theme",
+      "themeToDark": "Dark theme",
+      "langLabel": "Language",
+      "tabsLabel": "Sections",
+      "tabHome": "Home",
+      "tabBills": "Bills",
+      "tabAnalysis": "Analysis",
+      "tabSettings": "Settings",
+      "canSpend": "You can spend today",
+      "perDay": "Per day",
+      "free": "Free",
+      "payday": "Payday",
+      "spent": "Spent",
+      "days": "{n} d",
+      "leftSpend": "{left} left for wants · {days} days to payday",
+      "obligations": "Bills",
+      "wants": "Wants",
+      "invest": "Invest",
+      "setAside": "Set aside on the 1st",
+      "billsOf": "{actual} / planned {plan}",
+      "spentOf": "{spent} / {allow}",
+      "overflowSpend": "Bills ({bills}) exceed the plan ({plan}) by {gap}. The gap comes out of wants. Wants stay above 1,000 MAD, so investing does not change.",
+      "overflowInvest": "Bills exceed the plan and wants would have fallen under 1,000 MAD. Investing tops up wants, and never goes below 20%.",
+      "overflowFloor": "Bills are too heavy to keep 1,000 MAD of wants. Investing stays at the 20% floor ({floor} MAD).",
+      "rollover": "You are {n} MAD under yesterday's pace. That raises today's amount.",
+      "overspent": "This month's wants are already used. Today's amount is 0.",
+      "forecast": "Forecast to payday",
+      "upcoming": "Coming up",
+      "noneUpcoming": "Nothing before payday.",
+      "reserved": "Already reserved",
+      "telegram": "Telegram",
+      "tgHello": "Good morning",
+      "tgBody": "{daily} MAD for today. {days} days until payday.",
+      "tgNext": "Next bill: {name}, {amount} MAD. Already reserved.",
+      "tgPrivate": "Morning preview · never the full balance",
+      "analysisKicker": "Analysis",
+      "analysisTitle": "Where the money went",
+      "spentMonth": "{n} MAD this cycle",
+      "insightTop": "{name} is the largest category: {amount} MAD.",
+      "insightPaceUnder": "Under pace by {n} MAD versus yesterday's plan. Tomorrow can rise.",
+      "insightPaceOver": "Over pace by {n} MAD. The next day goes down.",
+      "emergency": "Savings goal",
+      "emergencyLine": "{saved} / {goal} MAD.",
+      "emergencySoon": "This month's invest share ({invest}) covers the rest.",
+      "emergencyMonths": "About {n} more months at the current invest pace.",
+      "billsKicker": "Every month",
+      "billsTitle": "Bills",
+      "income": "In",
+      "outgo": "Out",
+      "weekendMoved": "Weekend → business day",
+      "monthEnd": "Short month, last day",
+      "settingsKicker": "Your method",
+      "settingsTitle": "Settings",
+      "preset": "How the salary is split",
+      "presetThirds": "Thirds",
+      "preset503020": "50/30/20",
+      "presetCustom": "Custom",
+      "presetHintThirds": "33% invest, 33% bills, 34% wants. The last point of 33/33/33 goes to wants so the total is 100.",
+      "presetHint503020": "20% invest, 50% bills, 30% wants.",
+      "presetHintCustom": "Three shares. They must total 100.",
+      "sumBad": "The total is {n}, not 100.",
+      "weekend": "If a bill falls on a weekend",
+      "weekendBefore": "Previous business day",
+      "weekendAfter": "Next business day",
+      "weekendNone": "Keep the day",
+      "reset": "Reset the demo",
+      "addTitle": "Add an expense",
+      "addLabel": "Amount then a word",
+      "addPlaceholder": "45 café",
+      "addSave": "Add",
+      "addCancel": "Cancel",
+      "added": "{amount} MAD added to {cat}.",
+      "addError": "Write an amount then a word, for example 45 café.",
+      "fab": "Ajouter une dépense"
+    }
+  }
+}

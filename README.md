@@ -1,10 +1,10 @@
 # Money Tracker — démo
 
-Démo publique des maquettes Money Tracker (Dynamogic).
-Public demo of the Money Tracker mockups.
+Démo publique et cliquable du Money Tracker (Dynamogic). Fichiers statiques uniquement : `index.html`, `app.js`, `styles.css`, `data.json`.
 
-Les chiffres affichés sont fictifs. Ce dépôt ne contient ni compte, ni jeton, ni donnée financière personnelle. L’application réelle est privée.
-The figures shown are fictional. This repository has no accounts, no tokens, and no personal financial data. The real application is private.
+Les chiffres sont fictifs. Ce dépôt ne contient ni compte, ni jeton, ni donnée financière personnelle. L’application réelle est privée.
+
+Ouvrir `index.html` via un serveur local (le script charge `data.json`). Horloge de démo fixée au 12 novembre 2026.
 
 Site : https://mtaqys.github.io/money-demo/
 
