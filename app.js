@@ -202,18 +202,19 @@
     });
     const pts = [];
     for (let d = new Date(model.start); d < model.today; d = addDays(d, 1)) {
-      pts.push({ bal: bal, future: false });
+      pts.push({ bal: bal, future: false, date: new Date(d), bill: 0 });
       const k = iso(d);
       bal -= (txOf[k] || 0) + (billOf[k] || 0);
     }
     bal -= txOf[iso(model.today)] || 0;
-    pts.push({ bal: bal, future: false });
+    pts.push({ bal: bal, future: false, date: new Date(model.today), bill: 0 });
     const pace = model.daysToPayday > 0 ? Math.max(0, model.budget.spend - model.spent) / model.daysToPayday : 0;
     let f = bal;
     for (let i = 0; i < model.daysToPayday; i += 1) {
-      const k = iso(addDays(model.today, i));
-      f -= (billOf[k] || 0) + pace;
-      pts.push({ bal: f, future: true });
+      const day = addDays(model.today, i);
+      const bill = billOf[iso(day)] || 0;
+      f -= bill + pace;
+      pts.push({ bal: f, future: true, date: addDays(day, 1), bill: bill });
     }
     return pts;
   }
@@ -224,22 +225,74 @@
   }
 
   function chartSVG(pts) {
-    const w = 320;
-    const h = 112;
-    const pad = 8;
+    const w = 342;
+    const h = 128;
+    const padX = 10;
+    const plotTop = 18;
+    const plotBottom = 102;
     const vals = pts.map((p) => p.bal);
     const min = Math.min(0, ...vals);
     const max = Math.max(1, ...vals);
-    const x = (i) => pad + (pts.length === 1 ? 0 : (i / (pts.length - 1)) * (w - pad * 2));
-    const y = (v) => 8 + (1 - (v - min) / (max - min)) * (h - 22);
+    const span = (max - min) || 1;
+    const x = (i) => padX + (pts.length < 2 ? 0 : (i / (pts.length - 1)) * (w - padX * 2));
+    const y = (v) => plotTop + (1 - (v - min) / span) * (plotBottom - plotTop);
     const split = pts.findIndex((p) => p.future);
-    const solidEnd = Math.max(split, 1);
-    const solid = pts.slice(0, solidEnd);
-    const dashed = pts.slice(Math.max(split - 1, 0));
-    const line = (list, offset) => list.map((p, i) => x(i + offset).toFixed(1) + "," + y(p.bal).toFixed(1)).join(" ");
-    return '<svg class="chart" viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + esc(t("forecast")) + '">' +
-      '<polyline points="' + line(solid, 0) + '" fill="none" stroke="var(--t1)" stroke-width="2"/>' +
-      '<polyline points="' + line(dashed, Math.max(split - 1, 0)) + '" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="5 4"/></svg>';
+    const todayI = split < 0 ? pts.length - 1 : Math.max(0, split - 1);
+    const pt = (p, i) => x(i).toFixed(1) + "," + y(p.bal).toFixed(1);
+    const solid = pts.slice(0, todayI + 1);
+    const dashed = pts.slice(todayI);
+    const line = (list, offset) => list.map((p, i) => pt(p, i + offset)).join(" ");
+    const area = (list, offset) => {
+      if (!list.length) return "";
+      const first = x(offset).toFixed(1);
+      const last = x(offset + list.length - 1).toFixed(1);
+      const base = plotBottom.toFixed(1);
+      return "M" + list.map((p, i) => pt(p, i + offset)).join(" L") + " L" + last + "," + base + " L" + first + "," + base + " Z";
+    };
+    const markers = pts.map((p, i) => {
+      if (!p.future || !p.bill) return "";
+      return '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(p.bal).toFixed(1) + '" r="3.5" fill="var(--bg)" stroke="var(--a)" stroke-width="1.5"/>';
+    }).join("");
+    const tickAt = [];
+    pts.forEach((p, i) => {
+      if (i === 0 || i === pts.length - 1 || (p.date && p.date.getDate() % 7 === 1)) tickAt.push(i);
+    });
+    const ticks = [];
+    tickAt.forEach((i) => {
+      const prev = ticks.length ? ticks[ticks.length - 1].i : -1;
+      if (prev >= 0 && x(i) - x(prev) < 26) {
+        if (i === pts.length - 1) ticks.pop();
+        else return;
+      }
+      const anchor = i === 0 ? "start" : i === pts.length - 1 ? "end" : "middle";
+      ticks.push({ i: i, el: '<text x="' + x(i).toFixed(1) + '" y="118" text-anchor="' + anchor + '">' + pts[i].date.getDate() + "</text>" });
+    });
+    const end = pts[pts.length - 1];
+    const now = pts[todayI];
+    const aria = t("forecastAria", {
+      now: money(now.bal),
+      end: money(end.bal),
+      day: String(end.date.getDate())
+    });
+    const tx = x(todayI);
+    const labelAnchor = tx > w - 86 ? "end" : "start";
+    const labelX = tx > w - 86 ? tx - 8 : tx + 8;
+    const endY = Math.min(plotBottom - 4, Math.max(12, y(end.bal) - 8));
+    return '<svg class="chart" viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + esc(aria) + '">' +
+      '<defs><linearGradient id="forecast-past" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--t1)" stop-opacity="0.16"/><stop offset="1" stop-color="var(--t1)" stop-opacity="0"/></linearGradient>' +
+      '<linearGradient id="forecast-future" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--a)" stop-opacity="0.18"/><stop offset="1" stop-color="var(--a)" stop-opacity="0"/></linearGradient></defs>' +
+      '<line x1="' + padX + '" x2="' + (w - padX) + '" y1="' + y(end.bal).toFixed(1) + '" y2="' + y(end.bal).toFixed(1) + '" stroke="var(--a)" stroke-opacity="0.35" stroke-dasharray="2 4"/>' +
+      '<path d="' + area(solid, 0) + '" fill="url(#forecast-past)"/>' +
+      '<path d="' + area(dashed, todayI) + '" fill="url(#forecast-future)"/>' +
+      '<polyline points="' + line(solid, 0) + '" fill="none" stroke="var(--t1)" stroke-width="2" stroke-linejoin="round"/>' +
+      '<polyline points="' + line(dashed, todayI) + '" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/>' +
+      '<line x1="' + tx.toFixed(1) + '" x2="' + tx.toFixed(1) + '" y1="' + plotTop + '" y2="' + plotBottom + '" stroke="var(--b2)"/>' +
+      markers +
+      '<circle cx="' + tx.toFixed(1) + '" cy="' + y(now.bal).toFixed(1) + '" r="10" fill="var(--t1)" opacity="0.12"/>' +
+      '<circle cx="' + tx.toFixed(1) + '" cy="' + y(now.bal).toFixed(1) + '" r="5" fill="var(--t1)"/>' +
+      '<text class="today" x="' + labelX.toFixed(1) + '" y="14" text-anchor="' + labelAnchor + '">' + esc(t("today")) + "</text>" +
+      '<text class="end" x="' + (w - padX) + '" y="' + endY.toFixed(1) + '" text-anchor="end">' + esc(t("forecastEnd", { amount: money(end.bal), day: String(end.date.getDate()) })) + "</text>" +
+      "<g>" + ticks.map((tk) => tk.el).join("") + "</g></svg>";
   }
 
   function ringSVG(txs) {
@@ -311,6 +364,9 @@
       '<section><h1 class="kicker" id="screen-title">' + esc(t("canSpend")) + '</h1>' +
       '<p class="hero" id="metric-daily">' + money(model.daily) + "<small>MAD</small></p>" +
       '<p class="sub">' + esc(t("leftSpend", { left: money(model.safe), days: String(model.daysToPayday) })) + "</p>" + pace +
+      '<div class="forecast"><div class="forecast-head"><span class="kicker">' + esc(t("forecast")) +
+      '</span><span class="lg"><i></i>' + esc(t("actual")) + '<i class="a"></i>' + esc(t("planned")) + "</span></div>" +
+      chartSVG(pointsFor(model)) + "</div>" +
       '<div class="stats"><div><span class="kicker">' + esc(t("free")) + '</span><b id="metric-safe">' + money(model.safe) + "</b></div>" +
       "<div><span class=\"kicker\">" + esc(t("payday")) + "</span><b>" + esc(t("days", { n: String(model.daysToPayday) })) + "</b></div>" +
       "<div><span class=\"kicker\">" + esc(t("spent")) + '</span><b id="metric-spent">' + money(model.spent) + "</b></div></div>" +
@@ -323,7 +379,6 @@
       '<div class="tier"><div class="line"><b>' + esc(t("invest")) + "</b><span>" + money(model.budget.invest) +
       "</span></div><p>" + esc(t("setAside")) + "</p>" + bar(100, "dim") + "</div></div>" +
       (msg ? '<div class="card" id="overflow"><p class="note">' + esc(msg) + "</p></div>" : "") +
-      '<div class="card"><h2>' + esc(t("forecast")) + "</h2>" + chartSVG(pointsFor(model)) + "</div>" +
       '<div class="card"><h2>' + esc(t("upcoming")) + "</h2>" + upcoming + "</div>" +
       '<div class="card" id="telegram"><div class="tg-head"><div class="avatar"><svg class="mark" viewBox="0 0 48 48" width="18" height="18" aria-hidden="true"><path class="owl" fill="var(--t1)" fill-rule="evenodd" d="M24 14.6L45 2.476L41 9.404L41 28L24 45L7 28L7 9.404L3 2.476Z M26.151 21.758A6 6 0 1 0 36.082 16.024Z M21.849 21.758A6 6 0 1 1 11.918 16.024Z M29.1 22.321A2.6 2.6 0 1 0 34.3 22.321A2.6 2.6 0 1 0 29.1 22.321Z M13.7 22.321A2.6 2.6 0 1 0 18.9 22.321A2.6 2.6 0 1 0 13.7 22.321Z M24 24.299L27.985 26.599L24 37.913L20.015 26.599Z"/><path class="beak" fill="var(--a)" d="M24 25.8L26.4 27.186L24 34L21.6 27.186Z"/></svg></div><div><strong>Dynamogic</strong><div class="muted">' + esc(t("telegram")) + "</div></div></div>" +
       '<div class="bubble" id="telegram-text"><span class="who">' + esc(t("tgHello")) + "</span><strong>" + money(model.daily) + ' MAD</strong><p>' +

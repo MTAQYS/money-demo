@@ -1,6 +1,6 @@
 # Money Tracker — démo
 
-Démo publique et cliquable du Money Tracker (Dynamogic). Fichiers statiques uniquement : `index.html`, `app.js`, `styles.css`, `data.json`.
+Démo publique et cliquable du Money Tracker (Dynamogic). Fichiers statiques : `index.html`, `app.js`, `styles.css`, `data.json`, et les polices auto-hébergées dans `fonts/` (Instrument Serif, Geist, Geist Mono, licences OFL). Georgia reste le repli serif.
 
 Les chiffres sont fictifs. Ce dépôt ne contient ni compte, ni jeton, ni donnée financière personnelle. L’application réelle est privée.
 
