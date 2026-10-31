@@ -1,0 +1,73 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#0E0F11"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"><title>Money Tracker — méthode des tiers</title><link rel="icon" href="../favicon.ico" sizes="48x48"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon-180.png"><link rel="stylesheet" href="../fonts/fonts.css"><style>:root{--bg:#0E0F11;--s:#16181B;--r:#1C1E22;--b:#26292E;--b2:#3A3E44;--t1:#ECEAE5;--t2:#A9A59E;--t3:#85817A;--a:#D4925F}
+.light{--bg:#F5F3EE;--s:#FBFAF7;--r:#EFECE6;--b:#E2DED5;--b2:#CBC6BB;--t1:#16171A;--t2:#55524C;--t3:#6F6B64;--a:#9C5428}
+*{box-sizing:border-box;margin:0}
+body{background:#08090a;display:flex;gap:36px;padding:64px 48px 48px;font-family:Geist, system-ui, sans-serif;width:max-content}
+.w{display:flex;flex-direction:column;gap:14px}
+.cap{font:12px 'Geist Mono', ui-monospace, monospace;letter-spacing:.12em;text-transform:uppercase;color:#85817A;padding-left:8px}
+.p{width:390px;height:844px;background:var(--bg);border-radius:46px;border:1px solid var(--b);padding:54px 24px 24px;color:var(--t1);position:relative;overflow:hidden;
+ background-image:radial-gradient(120% 50% at 50% -10%,color-mix(in srgb,var(--a) 9%,transparent),transparent 60%)}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.pill{font-size:13px;color:var(--t2);border:1px solid var(--b);border-radius:99px;padding:6px 12px;background:var(--s)}
+.k{font:11px 'Geist Mono', ui-monospace, monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--t2)}
+.big{font:400 76px/1 'Instrument Serif', Georgia, 'Times New Roman', serif;margin:8px 0 6px;letter-spacing:-.02em}
+.big small{font:500 17px Geist, system-ui, sans-serif;color:var(--t2);margin-left:8px;letter-spacing:0}
+.t{font:400 42px/1.02 'Instrument Serif', Georgia, 'Times New Roman', serif;margin:8px 0 8px}
+.sub{color:var(--t2);font-size:14.5px}.sub b{color:var(--a);font-weight:500}.sub b.wt{color:var(--t1)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:16px;border:1px solid var(--b);border-radius:16px;background:var(--s)}
+.stats div{padding:10px 14px;border-left:1px solid var(--b)}.stats div:first-child{border-left:0}
+.stats b{display:block;font:400 24px 'Instrument Serif', Georgia, 'Times New Roman', serif;margin-top:4px}
+.card{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:12px 16px;margin-top:12px}
+.chc{padding:14px 0 6px}.chc .h{padding:0 16px}.ch{display:block;margin:6px auto 0}
+.ch .lb{font:10.5px 'Geist Mono', ui-monospace, monospace;fill:var(--t2)}.ch .lb.a{fill:var(--a)}.tk text{font:10px 'Geist Mono', ui-monospace, monospace;fill:var(--t2)}
+.h{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px}.h a{color:var(--a);font-size:13px}
+.lg{font:10.5px 'Geist Mono', ui-monospace, monospace;color:var(--t2);display:flex;align-items:center;gap:6px}
+.lg i{width:10px;height:2px;background:var(--t1);display:inline-block}.lg i.a{background:var(--a);margin-left:6px}
+.row{display:flex;align-items:center;gap:14px;padding:7px 0;border-top:1px solid var(--b)}
+.h+.row,.card>.row:first-child{border-top:0}
+.d{width:36px;font:11px 'Geist Mono', ui-monospace, monospace;color:var(--t2);text-align:center}.d b{display:block;font:400 21px/1.1 'Instrument Serif', Georgia, 'Times New Roman', serif;color:var(--t1)}
+.n{flex:1;font-size:14.5px}.n span{display:block;font-size:12px;color:var(--t2);margin-top:2px}
+.m{font:14px 'Geist Mono', ui-monospace, monospace;color:var(--t2)}.m.pos{color:var(--t1)}
+.fab{border:0;position:absolute;right:24px;bottom:110px;width:56px;height:56px;border-radius:18px;background:var(--a);color:var(--bg);font-size:28px;display:grid;place-items:center;box-shadow:0 10px 30px -8px color-mix(in srgb,var(--a) 60%,transparent)}
+.nav{position:absolute;left:16px;right:16px;bottom:30px;display:flex;justify-content:space-around;padding:10px 6px;border:1px solid var(--b);border-radius:24px;background:color-mix(in srgb,var(--s) 85%,transparent);backdrop-filter:blur(12px)}
+.ni{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;color:var(--t2);width:70px}.ni.on{color:var(--t1)}.ni.on svg{color:var(--a)}
+.ex{position:absolute;bottom:10px;left:0;right:0;text-align:center;font:10px 'Geist Mono', ui-monospace, monospace;color:var(--t2)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);row-gap:3px;text-align:center}
+.cal .wd{font:10px 'Geist Mono', ui-monospace, monospace;color:var(--t2);padding-bottom:4px}
+.cal .day{font:13px 'Geist Mono', ui-monospace, monospace;height:27px;line-height:26px;position:relative;border-radius:10px;color:var(--t1)}
+.cal .past{color:var(--t2);opacity:.75}.cal .today{background:var(--t1);color:var(--bg)}
+.cal i{position:absolute;left:50%;bottom:2px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--a)}.cal i.in{background:var(--t2)}
+.dc{display:flex;align-items:center;gap:14px;padding:16px}
+.dn{font:400 30px 'Instrument Serif', Georgia, 'Times New Roman', serif;fill:var(--t1)}.dl{font:10px 'Geist Mono', ui-monospace, monospace;fill:var(--t2)}
+.leg2{flex:1}.li{display:flex;align-items:center;gap:8px;font-size:13px;padding:5px 0}.li i{width:8px;height:8px;border-radius:2px}.li span{flex:1;color:var(--t2)}.li b{font:12.5px 'Geist Mono', ui-monospace, monospace;font-weight:400}
+.ins{display:flex;gap:12px;background:var(--s);border:1px solid var(--b);border-radius:18px;padding:13px 14px;margin-top:10px}
+.ic{width:32px;height:32px;flex:none;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--a) 16%,transparent);color:var(--a);font-size:15px}
+.ins b{font-weight:500;font-size:14px}.ins p{font-size:12.5px;color:var(--t2);margin-top:3px;line-height:1.4}
+.pb{height:5px;border-radius:3px;background:var(--r);margin-top:8px}.pb i{display:block;height:100%;border-radius:3px;background:var(--a)}
+.tg{background:#0B0C0E}
+.tgh{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--b);margin-bottom:14px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--s);border:1px solid var(--b);display:grid;place-items:center}
+.dt{text-align:center;font:10.5px 'Geist Mono', ui-monospace, monospace;color:var(--t2);margin:4px 0 12px}
+.bub{background:var(--s);border:1px solid var(--b);border-radius:18px 18px 18px 6px;padding:11px 14px;font-size:14px;line-height:1.45;max-width:86%;margin-bottom:9px}
+.bub .bk{display:block;font:10.5px 'Geist Mono', ui-monospace, monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:3px}.bub .bk.a{color:var(--a)}
+.bub .bn{display:block;font:400 34px/1.1 'Instrument Serif', Georgia, 'Times New Roman', serif}
+.bub b{font-weight:600}.bub .tm{display:block;text-align:right;font:10px 'Geist Mono', ui-monospace, monospace;color:var(--t2);margin-top:3px}
+.bub.warn{border-color:color-mix(in srgb,var(--a) 45%,var(--b))}
+.me{background:var(--a);color:#0E0F11;border:0;border-radius:18px 18px 6px 18px;margin-left:auto;max-width:48%}.me .tm{color:#0E0F11a0}
+.kb{position:absolute;left:24px;right:24px;bottom:34px;display:flex;gap:8px}.kb span{flex:1;text-align:center;font-size:12.5px;padding:10px 0;border:1px solid var(--b);border-radius:12px;background:var(--s);color:var(--t2)}
+
+.tier{background:var(--s);border:1px solid var(--b);border-radius:18px;padding:13px 16px;margin-top:10px}
+.tier .l{display:flex;justify-content:space-between;align-items:baseline}.tier .l b{font-weight:500;font-size:15px}.tier .l span{font:13px 'Geist Mono', ui-monospace, monospace;color:var(--t2)}
+.tier p{font-size:12.5px;color:var(--t2);margin-top:3px}
+.tr{position:relative;height:8px;border-radius:4px;background:var(--r);margin-top:10px}.tr i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--t1)}
+.tr.a i{background:var(--a)}.tr u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--t2)}
+.split{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:3px;margin:16px 0 8px}.split i{flex:1;background:var(--t1)}.split i:nth-child(2){background:var(--a)}.split i:nth-child(3){background:var(--b2)}
+.sl{display:flex;justify-content:space-between;font:11px 'Geist Mono', ui-monospace, monospace;color:var(--t2)}
+.demo-back{position:fixed;z-index:5;top:12px;left:12px;font:11px 'Geist Mono', ui-monospace, monospace;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#ECEAE5;background:#0E0F11;border:1px solid #3A3E44;border-radius:999px;padding:7px 12px}.demo-back:hover{color:#D4925F;border-color:#D4925F}</style></head><body><a class="demo-back" href="../index.html">Démo</a><div class="w"><div class="p"><div class="top"><div class="brand"><svg width="22" height="22" viewBox="0 0 48 48"><path fill="var(--t1)" fill-rule="evenodd" d="M24 14.6L45 2.476L41 9.404L41 28L24 45L7 28L7 9.404L3 2.476Z M26.151 21.758A6 6 0 1 0 36.082 16.024Z M21.849 21.758A6 6 0 1 1 11.918 16.024Z M29.1 22.321A2.6 2.6 0 1 0 34.3 22.321A2.6 2.6 0 1 0 29.1 22.321Z M13.7 22.321A2.6 2.6 0 1 0 18.9 22.321A2.6 2.6 0 1 0 13.7 22.321Z M24 24.299L27.985 26.599L24 37.913L20.015 26.599Z"/><path fill="var(--a)" d="M24 25.8L26.4 27.186L24 34L21.6 27.186Z"/></svg></div><div class="pill">Méthode des tiers</div></div>
+<div class="k" style="color:var(--t2)">Tu peux dépenser aujourd'hui</div>
+<div class="big">69<small>MAD</small></div>
+<div class="sub">Reste <b class="wt" style="color:var(--t1)">1 320</b> sur 2 000 pour tes envies · 19 jours</div>
+<div class="split"><i></i><i></i><i></i></div><div class="sl"><span>Obligations ⅓</span><span>Envies ⅓</span><span>Investir ⅓</span></div>
+<div class="tier"><div class="l"><b>Obligations</b><span>1 800 / 2 000</span></div><p>Loyer, factures, abonnements. 200 de marge.</p><div class="tr"><i style="width:90%"></i></div></div>
+<div class="tier"><div class="l"><b>Envies</b><span>680 / 2 000</span></div><p>Dans le rythme : tu es 53 MAD sous la ligne du jour.</p><div class="tr a"><i style="width:34%"></i><u style="left:36.6%"></u></div></div>
+<div class="tier"><div class="l"><b>Investir</b><span>2 000 / 2 000</span></div><p>Mis de côté le 1er, avant toute dépense.</p><div class="tr"><i style="width:100%;background:var(--t2)"></i></div></div>
+<button class="fab" aria-label="Ajouter une dépense">+</button><div class="nav"><div class="ni on"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg><span>Accueil</span></div><div class="ni"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span>Échéances</span></div><div class="ni"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Analyse</span></div><div class="ni"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg><span>Réglages</span></div></div><div class="ex" style="color:var(--t2)">Données d'exemple, salaire de 6 000 MAD</div></div></div></body></html>
