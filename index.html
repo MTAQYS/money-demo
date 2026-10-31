@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0E0F11">
+  <meta name="description" content="Démo publique Money Tracker. Données fictives.">
+  <title>Money Tracker — démo</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'none'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Contenu</a>
+  <div class="app">
+    <p class="banner" role="note">Démo — données fictives</p>
+    <header class="top">
+      <svg class="mark" viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
+        <path class="owl" fill-rule="evenodd" d="M24 14.6L45 2.476L41 9.404L41 28L24 45L7 28L7 9.404L3 2.476Z M26.151 21.758A6 6 0 1 0 36.082 16.024Z M21.849 21.758A6 6 0 1 1 11.918 16.024Z M29.1 22.321A2.6 2.6 0 1 0 34.3 22.321A2.6 2.6 0 1 0 29.1 22.321Z M13.7 22.321A2.6 2.6 0 1 0 18.9 22.321A2.6 2.6 0 1 0 13.7 22.321Z M24 24.299L27.985 26.599L24 37.913L20.015 26.599Z"/>
+        <path class="beak" d="M24 25.8L26.4 27.186L24 34L21.6 27.186Z"/>
+      </svg>
+      <span class="pill" id="month-pill">Novembre</span>
+      <div class="spacer"></div>
+      <div class="seg" id="lang" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" id="lang-fr">FR</button>
+        <button type="button" data-lang="en" id="lang-en">EN</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false">Clair</button>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer>
+      <a href="https://dynamogic.com/">Dynamogic</a>
+      <a href="mailto:contact@dynamogic.com">contact@dynamogic.com</a>
+    </footer>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Sections" hidden>
+      <button type="button" role="tab" data-tab="home" id="tab-home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>
+        <span>Accueil</span>
+      </button>
+      <button type="button" role="tab" data-tab="bills" id="tab-bills">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+        <span>Échéances</span>
+      </button>
+      <button type="button" role="tab" data-tab="analysis" id="tab-analysis">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
+        <span>Analyse</span>
+      </button>
+      <button type="button" role="tab" data-tab="settings" id="tab-settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+        <span>Réglages</span>
+      </button>
+    </nav>
+    <button type="button" class="fab" id="fab" aria-label="Ajouter une dépense" hidden>+</button>
+    <dialog id="add-dialog" aria-labelledby="add-title">
+      <form id="add-form">
+        <h2 id="add-title">Ajouter une dépense</h2>
+        <label for="add-input" id="add-label">Montant puis un mot</label>
+        <input id="add-input" name="expense" autocomplete="off" enterkeyhint="done" placeholder="45 café">
+        <p id="add-error" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button type="button" id="add-cancel">Annuler</button>
+          <button type="submit" id="add-save">Ajouter</button>
+        </div>
+      </form>
+    </dialog>
+    <p id="status" class="sr" role="status"></p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
